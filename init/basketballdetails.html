@@ -17,7 +17,11 @@
                 var lastName = document.getElementById("lastname");
                 var email = document.getElementById("email");
                 var quantity = document.getElementById("quantity");
+                var itemid = document.getelementById("itemid");
                 var address = document.getElementById("address");
+                var city = document.getElementById("city");
+                var state = document.getElementById("state");
+                
                 
                 var formattedMailtoLink = "mailto:" + email + "?Subject=Thank you for your order&Body=" + 
                         "Here's your purchase information: \n";
@@ -37,6 +41,10 @@
             <tr>
               <td class="thick">Product: </td>
               <td>Basketball</td>		
+            </tr>
+            <tr>
+                <td class="thick">Item ID: </td>
+                <td>1</td>
             </tr>
             <tr>
               <td class="thick">Price: </td>
@@ -186,7 +194,7 @@
                 <option value="6Day">6-Day Ground</option>
             </select><br><br>
             
-            <a href=getEmailBody() target="_top"><input type="submit" value="Submit"></a>
+            <a href=getEmailBody() target="_top">Submit</a>
         </form>  
     </body>
 </html>
