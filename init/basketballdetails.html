@@ -2,14 +2,14 @@
     <head>
         <script>
             function getEmailBody() {
-                var firstName = document.getElementById("firstname");
-                var lastName = document.getElementById("lastname");
-                var email = document.getElementById("email");
-                var quantity = document.getElementById("quantity");
-                var itemid = document.getElementById("itemid");
-                var address = document.getElementById("address");
-                var city = document.getElementById("city");
-                var state = document.getElementById("state");
+                var firstName = document.getElementById("firstname").value;
+                var lastName = document.getElementById("lastname").value;
+                var email = document.getElementById("email").value;
+                var quantity = document.getElementById("quantity").value;
+                var itemid = document.getElementById("itemid").value;
+                var address = document.getElementById("address").value;
+                var city = document.getElementById("city").value;
+                var state = document.getElementById("state").value;
                 
                 
                 var formattedMailtoLink = "mailto:" + email.value + "?Subject=Thank you for your order&Body=" + 
@@ -192,8 +192,8 @@
                 <option value="2Day">2-Day Expedited</option>
                 <option value="6Day">6-Day Ground</option>
             </select><br><br>
-            
             <a href="" onclick="getEmailBody()" id="submitAnchor">Submit</a>
+
 
         </form>  
     </body>
