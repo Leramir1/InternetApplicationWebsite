@@ -1,16 +1,5 @@
 <html>
-    <head></head>
-    <style>
-        body {
-            margin: 5%;
-        }
-        
-        td.thick {
-            font-weight: bold;
-        }
-    </style>
-    <body>
-      
+    <head>
         <script>
             function getEmailBody() {
                 var firstName = document.getElementById("firstname");
@@ -23,13 +12,23 @@
                 var state = document.getElementById("state");
                 
                 
-                var formattedMailtoLink = "mailto:" + email + "?Subject=Thank you for your order&Body=" + 
+                var formattedMailtoLink = "mailto:" + email.value + "?Subject=Thank you for your order&Body=" + 
                         "Here's your purchase information: \n";
-                return formattedMailtoLink;
+                document.getElementById("submitAnchor").setAttribute("href", formattedMailtoLink);
             }
             
         </script>
+    </head>
+    <style>
+        body {
+            margin: 5%;
+        }
         
+        td.thick {
+            font-weight: bold;
+        }
+    </style>
+    <body>
         <a href="index.html">
         <input type="image" src="../resources/back_arrow.png" width="30" height="30" />
         </a>
@@ -194,7 +193,8 @@
                 <option value="6Day">6-Day Ground</option>
             </select><br><br>
             
-            <a href=getEmailBody() target="_top">Submit</a>
+            <a href="" onclick="getEmailBody()" id="submitAnchor">Submit</a>
+
         </form>  
     </body>
 </html>
