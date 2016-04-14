@@ -1,19 +1,22 @@
 <html>
     <head>
         <script>
-            function getEmailBody() {
+            function getEmailBody(productName) {
                 var firstName = document.getElementById("firstname").value;
                 var lastName = document.getElementById("lastname").value;
                 var email = document.getElementById("email").value;
                 var quantity = document.getElementById("quantity").value;
                 var itemid = document.getElementById("itemid").value;
+                var ship = document.getElementById("ship").value;
                 var address = document.getElementById("address").value;
                 var city = document.getElementById("city").value;
                 var state = document.getElementById("state").value;
                 
-                
-                var formattedMailtoLink = "mailto:" + email.value + "?Subject=Thank you for your order&Body=" + 
-                        "Here's your purchase information: \n";
+                var totalCost = 19.99 * quantity;
+                var formattedMailtoLink = "mailto:" + email + "?Subject=Balls To The Walls Emporium: Thank you for your order&Body=" + 
+                        "Here's your purchase information: \nProduct Name: " + productName + 
+                        "\nQuantity: " + quantity + "\nItem ID: " + itemid + "\nShipping method: " + ship + 
+                        "\nShipping address: " + address + "\nCity: " + city + "\nState: " + state + "\n\nTotal Cost: " + totalCost;
                 document.getElementById("submitAnchor").setAttribute("href", formattedMailtoLink);
             }
             
@@ -192,7 +195,7 @@
                 <option value="2Day">2-Day Expedited</option>
                 <option value="6Day">6-Day Ground</option>
             </select><br><br>
-            <a href="" onclick="getEmailBody()" id="submitAnchor">Submit</a>
+            <a href="" onclick="getEmailBody('Basket Ball')" id="submitAnchor">Submit</a>
 
 
         </form>  
