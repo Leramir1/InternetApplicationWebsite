@@ -1,0 +1,211 @@
+
+<html>
+    <head>
+        <title>Footballs</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            function getEmailBody(productName) {
+                var firstName = document.getElementById("firstname").value;
+                var lastName = document.getElementById("lastname").value;
+                var email = document.getElementById("email").value;
+                var quantity = document.getElementById("quantity").value;
+                var itemid = document.getElementById("itemid").value;
+                var ship = document.getElementById("ship").value;
+                var address = document.getElementById("address").value;
+                var city = document.getElementById("city").value;
+                var state = document.getElementById("state").value;
+                
+                var totalCost = 19.99 * quantity;
+                var formattedMailtoLink = "mailto:" + email + "?Subject=Balls To The Walls Emporium: Thank you for your order&Body=" + 
+                        "Here's your purchase information: \nProduct Name: " + productName + 
+                        "\nQuantity: " + quantity + "\nItem ID: " + itemid + "\nShipping method: " + ship + 
+                        "\nShipping address: " + address + "\nCity: " + city + "\nState: " + state + "\n\nTotal Cost: " + totalCost;
+                document.getElementById("submitAnchor").setAttribute("href", formattedMailtoLink);
+            }
+            
+        </script>
+    </head>
+    <style>
+        body {
+            margin: 5%;
+        }
+        
+        td.thick {
+            font-weight: bold;
+        }
+    </style>
+    <body>
+         <body>
+        <a href="index.html">
+        <input type="image" src="../resources/back_arrow.png" width="30" height="30" />
+        </a>
+        
+        <br>
+        <img src="../resources/football.png" alt="Image not found" width="150" height="150" class="productImage">
+        <br>
+        <table style="width:50%">
+            <tr>
+              <td class="thick">Product: </td>
+              <td>Football</td>		
+            </tr>
+            <tr>
+                <td class="thick">Item ID: </td>
+                <td>1</td>
+            </tr>
+            <tr>
+              <td class="thick">Price: </td>
+              <td>$19.99</td>
+            </tr>
+            <tr>
+              <td class="thick">Color: </td>
+              <td>brown with  white laces</td>		
+            </tr>
+            <tr>
+                <td valign="top" class="thick">Description: </td>
+                <td>Football is a well-loved sport that dates back to the nineteeth century. It's game that takes place on a rectangular football field with goal lines on both ends. The game begins with two teams of equal number, but varying player size, were divided b a center line.
+            </tr>
+          </table>
+        
+        <p>Additional Information</p>
+        <table style="width:50%">
+            <tr>
+              <td>Shape: oval, uneven shape</td>		
+            </tr>
+            <tr>
+              <td>Circumference: 20.75-21.25 in (52.7-54 cm)</td>		
+            </tr>
+            <tr>
+                <td>Length: 11-11.25 in (28-29 cm)</td>
+            </tr>
+            <tr>
+                <td>Weight: 14-15 oz (397-425.25 g)</td>
+            </tr>
+            <tr>
+                <td>Material: synthetic leather, usually polyurethane or polyvinyl chloride, stitched around an inflated rubber or rubber-like bladder</td>
+            </tr>
+          </table>
+        <hr><br>
+        <h2>Buy now!</h2>
+        <form>
+            First Name:<br>       
+            <input id="firstname" type="text" name="firstname" required><br><br>
+            Last Name:<br>
+            <input id="lastname" type="text" name="lastname" required><br><br>
+            Phone Number:<br>
+            <input id="telephone" type="tel" name="phonenumber" required><br><br>
+            E-mail Address:<br>
+            <input id="email" type="email" name="email" required><br><br>
+            Quantity:<br>
+            <input id="quantity" type="number" name="quantity" required><br><br>
+            Item ID:<br>
+            <input id="itemid" type="number" name="itemid" required><br><br>
+            Credit Card Number:<br>
+            <input id="ccnum" type="number" name="creditcard" required><br><br>
+            Exp Month/Year:
+            <select id="month" name="Month">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+            </select>
+            <select id="year" name="Year">
+                <option value="2016">16</option>
+                <option value="2017">17</option>
+                <option value="2018">18</option>
+                <option value="2019">19</option>
+                <option value="2020">20</option>
+                <option value="2021">21</option>
+                <option value="2022">22</option>
+                <option value="2023">23</option>
+                <option value="2024">24</option>
+                <option value="2025">25</option>
+                <option value="2026">26</option>
+                <option value="2027">27</option>                
+            </select><br><br>
+            Address:<br>
+            <input id="address" type="text" name="address" required><br><br>
+            City:<br>
+            <input id="city" type="text" name="city" required><br><br>
+            State<br>
+            <select id="state" name="State">
+                <option value="AL">AL</option>
+                <option value="AK">AK</option>
+                <option value="AS">AS</option>
+                <option value="AZ">AZ</option>
+                <option value="AR">AR</option>
+                <option value="CA">CA</option>
+                <option value="CO">CO</option>
+                <option value="CT">CT</option>
+                <option value="DE">DE</option>
+                <option value="DC">DC</option>
+                <option value="FL">FL</option>
+                <option value="GA">GA</option>
+                <option value="GU">GU</option>
+                <option value="HI">HI</option>
+                <option value="ID">ID</option>
+                <option value="IL">IL</option>
+                <option value="IN">IN</option>
+                <option value="IOWA">IA</option>
+                <option value="KS">KS</option>
+                <option value="KY">KY</option>
+                <option value="LA">LA</option>
+                <option value="ME">ME</option>
+                <option value="MD">MD</option>
+                <option value="MH">MH</option>
+                <option value="MA">MA</option>
+                <option value="MI">MI</option>
+                <option value="FM">FM</option>
+                <option value="MN">MN</option>
+                <option value="MS">MS</option>
+                <option value="MO">MO</option>
+                <option value="MT">MT</option>
+                <option value="NE">NE</option>
+                <option value="NV">NV</option>
+                <option value="NH">NH</option>
+                <option value="NJ">NJ</option>
+                <option value="NM">NM</option>
+                <option value="NY">NY</option>
+                <option value="NC">NC</option>
+                <option value="ND">ND</option>
+                <option value="MP">MP</option>
+                <option value="OH">OH</option>
+                <option value="OK">OK</option>
+                <option value="OR">OR</option>
+                <option value="PW">PW</option>
+                <option value="PA">PA</option>
+                <option value="PR">PR</option>
+                <option value="RI">RI</option>
+                <option value="SC">SC</option>
+                <option value="SD">SD</option>
+                <option value="TN">TN</option>
+                <option value="TX">TX</option>
+                <option value="UT">UT</option>
+                <option value="VT">VT</option>
+                <option value="VA">VA</option>
+                <option value="VI">VI</option>
+                <option value="WA">WA</option>
+                <option value="WV">WV</option>
+                <option value="WI">WI</option>
+                <option value="WY">WY</option>
+            </select><br><br>
+            Shipping:<br>
+            <select id="ship" name="Shipping Method">
+                <option value="overnight">Overnight</option>
+                <option value="2Day">2-Day Expedited</option>
+                <option value="6Day">6-Day Ground</option>
+            </select><br><br>
+            <a href="" onclick="getEmailBody('Football')" id="submitAnchor">Submit</a>
+
+
+        </form>  
+    </body>
+</html>
