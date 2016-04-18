@@ -1,8 +1,9 @@
+
 <html>
     <head>
-        <title>
-            Soccer
-        </title>
+        <title>Tennis Ball</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script>
             function getEmailBody(productName) {
                 var firstName = document.getElementById("firstname").value;
@@ -16,7 +17,7 @@
                 var state = document.getElementById("state").value;
                 
                 var totalCost = 19.99 * quantity;
-              var formattedMailtoLink = "mailto:" + email + "?Subject=Balls To The Walls Emporium: Thank you for your order&Body=" + 
+               var formattedMailtoLink = "mailto:" + email + "?Subject=Balls To The Walls Emporium: Thank you for your order&Body=" + 
                         "Here's your purchase information: %0D%0AProduct Name: " + productName + 
                         "%0D%0AQuantity: " + quantity + "%0D%0AItem ID: " + itemid + "%0D%0AShipping method: " + ship + 
                         "%0D%0AShipping address: " + address + "%0D%0ACity: " + city + "%0D%0AState: " + state + "%0D%0A%0D%0ATotal Cost: " + totalCost;
@@ -36,21 +37,22 @@
         }
     </style>
     <body>
-        <a href="index.html">
+         <body>
+        <a href="Overview.html">
         <input type="image" src="../resources/back_arrow.png" width="30" height="30" />
         </a>
         
         <br>
-        <img src="../resources/soccerball.png" alt="Image not found" width="150" height="150" class="productImage">
+        <img src="../resources/tennisball.png" alt="Image not found" width="150" height="150" class="productImage">
         <br>
         <table style="width:50%">
             <tr>
               <td class="thick">Product: </td>
-              <td>Soccer Ball</td>		
+              <td>Tennis ball</td>		
             </tr>
             <tr>
                 <td class="thick">Item ID: </td>
-                <td>3</td>
+                <td>6</td>
             </tr>
             <tr>
               <td class="thick">Price: </td>
@@ -58,28 +60,27 @@
             </tr>
             <tr>
               <td class="thick">Color: </td>
-              <td>Black and white pattern</td>		
+              <td>Fluorescent yellow</td>		
             </tr>
             <tr>
                 <td valign="top" class="thick">Description: </td>
-                <td>Soccer is a game that's involved with kicking and throwing a ball on the marked field. Two teams of eleven players play on a rectangular field with a goal at each end. Score by getting the ball into the opposing goal.
+                <td>Tennis balls are used for tennis. Usually covered in a fibrous felt with a white curvilinear oval covering it, this allows the ball to be altered to changing aerodynamic properties.</td>
             </tr>
           </table>
         
         <b><p>Additional Information</p></b>
         <table style="width:50%">
             <tr>
-              <td>Shape: spherical</td>		
+              <td>Shape: spherical</td>     
             </tr>
             <tr>
-              <td>Circumference: 27-28 in (68.6-71.12 cm)</td>		
+              <td>Circumference: 2.57 - 2.7 in (6.54 - 6.86 cm)</td>     
             </tr>
             <tr>
-                <td>Weight: 14-16 oz (0.392-0.448 kg)</td>
+                <td>Weight: 1.98–2.10 oz (56.0–59.4 g)</td>
             </tr>
             <tr>
-                <td>Material: synthetic leather, usually polyurethane or polyvinyl chloride, stitched around an inflated rubber or rubber-like bladder
-</td>
+                <td>Material: felt-covered rubber compound</td>
             </tr>
           </table>
         <hr><br>
@@ -200,7 +201,7 @@
                 <option value="2Day">2-Day Expedited</option>
                 <option value="6Day">6-Day Ground</option>
             </select><br><br>
-            <a href="" onclick="getEmailBody('Soccer Ball')" id="submitAnchor">Submit</a>
+            <a href="" onclick="getEmailBody('Tennis Ball')" id="submitAnchor">Submit</a>
 
 
         </form>  
