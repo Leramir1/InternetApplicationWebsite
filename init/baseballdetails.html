@@ -1,5 +1,8 @@
 <html>
     <head>
+        <title>
+            Baseball
+        </title>
         <script>
             function getEmailBody(productName) {
                 var firstName = document.getElementById("firstname").value;
@@ -13,7 +16,7 @@
                 var state = document.getElementById("state").value;
                 
                 var totalCost = 19.99 * quantity;
-                var formattedMailtoLink = "mailto:" + email + "?Subject=Balls To The Walls Emporium: Thank you for your order&Body=" + 
+              var formattedMailtoLink = "mailto:" + email + "?Subject=Balls To The Walls Emporium: Thank you for your order&Body=" + 
                         "Here's your purchase information: %0D%0AProduct Name: " + productName + 
                         "%0D%0AQuantity: " + quantity + "%0D%0AItem ID: " + itemid + "%0D%0AShipping method: " + ship + 
                         "%0D%0AShipping address: " + address + "%0D%0ACity: " + city + "%0D%0AState: " + state + "%0D%0A%0D%0ATotal Cost: " + totalCost;
@@ -38,16 +41,16 @@
         </a>
         
         <br>
-        <img src="../resources/basketball.png" alt="Image not found" width="150" height="150" class="productImage">
+        <img src="../resources/baseball.png" alt="Image not found" width="150" height="150" class="productImage">
         <br>
         <table style="width:50%">
             <tr>
               <td class="thick">Product: </td>
-              <td>Basketball</td>		
+              <td>Baseball</td>		
             </tr>
             <tr>
                 <td class="thick">Item ID: </td>
-                <td>1</td>
+                <td>4</td>
             </tr>
             <tr>
               <td class="thick">Price: </td>
@@ -55,11 +58,11 @@
             </tr>
             <tr>
               <td class="thick">Color: </td>
-              <td>orange with black ribs</td>		
+              <td>white and red</td>		
             </tr>
             <tr>
                 <td valign="top" class="thick">Description: </td>
-                <td>Basketball is a popular sport played by two teams of five players on a basketball court. A team can score a field goal by shooting the ball through the basket. Basketball is fun to play and requires only simple equipment. All you need to play basketball are a ball and hoop. Buy a basketball today to play with your friends.
+                <td>Baseball is a ball used in baseball, a popular American sport. The baseball is used to play on a diamond field with 3 bases.
             </tr>
           </table>
         
@@ -69,13 +72,14 @@
               <td>Shape: spherical</td>		
             </tr>
             <tr>
-              <td>Circumference: 28.5-30 in (72-76 cm)</td>		
+              <td>Circumference: 9.00 - 9.25 in (228.6 - 234.9 mm)</td>		
             </tr>
             <tr>
-                <td>Weight: 18-22 oz (510-624 g)</td>
+                <td>Weight: 5 - 5.25 oz (141.75 - 148.83 g)</td>
             </tr>
             <tr>
-                <td>Material: synthetic rubber</td>
+                <td>Material: a rubber or cork center tightly stitched together with red yarn; white horsehide or cowhide
+</td>
             </tr>
           </table>
         <hr><br>
@@ -196,7 +200,7 @@
                 <option value="2Day">2-Day Expedited</option>
                 <option value="6Day">6-Day Ground</option>
             </select><br><br>
-            <a href="" onclick="getEmailBody('Basket Ball')" id="submitAnchor">Submit</a>
+            <a href="" onclick="getEmailBody('Baseball')" id="submitAnchor">Submit</a>
 
 
         </form>  
