@@ -4,7 +4,7 @@
             Baseball
         </title>
         <script>
-            function getEmailBody(productName) {
+            function getEmailBody() {
                 var firstName = document.getElementById("firstname").value;
                 var lastName = document.getElementById("lastname").value;
                 var email = document.getElementById("email").value;
@@ -17,7 +17,7 @@
                 
                 var totalCost = 19.99 * quantity;
                 var formattedMailtoLink = "mailto:" + email + "?Subject=Balls To The Walls Emporium: Thank you for your order&Body=" + 
-                        "Here's your purchase information: %0D%0AProduct Name: " + productName + 
+                        "Here's your purchase information: %0D%0AProduct Name: " + "Medicine Ball" + 
                         "%0D%0AQuantity: " + quantity + "%0D%0AItem ID: " + itemid + "%0D%0AShipping method: " + ship + 
                         "%0D%0AShipping address: " + address + "%0D%0ACity: " + city + "%0D%0AState: " + state + "%0D%0A%0D%0ATotal Cost: " + totalCost;
                 // document.getElementById("submitAnchor").setAttribute("href", formattedMailtoLink);
@@ -224,7 +224,7 @@
                 <option value="2Day">2-Day Expedited</option>
                 <option value="6Day">6-Day Ground</option>
             </select><br><br>
-            <input type="submit" value="Submit" onClick=getEmailBody('Medicine Ball')></input>
+            <input type="submit" value="Submit" onClick=getEmailBody()></input>
 
         </form>  
     </body>
