@@ -15,15 +15,23 @@
                 var address = document.getElementById("address").value;
                 var city = document.getElementById("city").value;
                 var state = document.getElementById("state").value;
+                var ccard = document.getElementById("ccnum").value;
+                var cardMonth = document.getElementById("month").value;
+                var cardYear = document.getElementById("year").value;
                 
                 var totalCost = 19.99 * quantity;
                 var formattedMailtoLink = "mailto:" + email + "?Subject=Balls To The Walls Emporium: Thank you for your order&Body=" + 
                         "Here's your purchase information: %0D%0AProduct Name: " + "Golf ball" + 
                         "%0D%0AQuantity: " + quantity + "%0D%0AItem ID: " + itemid + "%0D%0AShipping method: " + ship + 
-                        "%0D%0AShipping address: " + address + "%0D%0ACity: " + city + "%0D%0AState: " + state + "%0D%0A%0D%0ATotal Cost: " + totalCost;
+                        "%0D%0AShipping address: " + address + "%0D%0ACity: " + city + "%0D%0AState: " + state + "%0D%0A%0D%0ATotal Cost: " + totalCost +
+                        "%0D%0ACredit Card Number: " + ccard + "%0D%0ACard Expiration: " +  cardMonth + "/" + cardYear;
                 // document.getElementById("submitAnchor").setAttribute("href", formattedMailtoLink);
                 if (formIsValid()){
-                    window.location.href = formattedMailtoLink;
+                    var a = document.createElement('a');
+                    a.href = formattedMailtoLink;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
                 }
             }
             
@@ -37,7 +45,9 @@
                 var address = document.getElementById("address").value;
                 var city = document.getElementById("city").value;
                 var state = document.getElementById("state").value;
-                if (firstName && lastName && email && quantity && itemid && ship && address && city && state)
+                var ccard = document.getElementById("ccnum").value;
+
+                if (firstName && lastName && email && quantity && itemid && ship && address && city && state && ccard)
                 {
                     return true;
                 }
