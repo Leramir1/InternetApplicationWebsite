@@ -17,11 +17,31 @@
                 var state = document.getElementById("state").value;
                 
                 var totalCost = 19.99 * quantity;
-               var formattedMailtoLink = "mailto:" + email + "?Subject=Balls To The Walls Emporium: Thank you for your order&Body=" + 
+                var formattedMailtoLink = "mailto:" + email + "?Subject=Balls To The Walls Emporium: Thank you for your order&Body=" + 
                         "Here's your purchase information: %0D%0AProduct Name: " + productName + 
                         "%0D%0AQuantity: " + quantity + "%0D%0AItem ID: " + itemid + "%0D%0AShipping method: " + ship + 
                         "%0D%0AShipping address: " + address + "%0D%0ACity: " + city + "%0D%0AState: " + state + "%0D%0A%0D%0ATotal Cost: " + totalCost;
-                document.getElementById("submitAnchor").setAttribute("href", formattedMailtoLink);
+                // document.getElementById("submitAnchor").setAttribute("href", formattedMailtoLink);
+                if (formIsValid()){
+                    window.location.href = formattedMailtoLink;
+                }
+            }
+            
+            function formIsValid() {
+                var firstName = document.getElementById("firstname").value;
+                var lastName = document.getElementById("lastname").value;
+                var email = document.getElementById("email").value;
+                var quantity = document.getElementById("quantity").value;
+                var itemid = document.getElementById("itemid").value;
+                var ship = document.getElementById("ship").value;
+                var address = document.getElementById("address").value;
+                var city = document.getElementById("city").value;
+                var state = document.getElementById("state").value;
+                if (firstName && lastName && email && quantity && itemid && ship && address && city && state)
+                {
+                    return true;
+                }
+                return false;
             }
             
         </script>
@@ -206,8 +226,7 @@
                 <option value="2Day">2-Day Expedited</option>
                 <option value="6Day">6-Day Ground</option>
             </select><br><br>
-            <a href="" onclick="getEmailBody('Softball')" id="submitAnchor">Submit</a>
-
+            <input type="submit" value="Submit" onClick=getEmailBody('Soft Ball')></input>
 
         </form>  
     </body>
