@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<?php
+
+$servername = "";
+$username = "root";
+$password = "password";
+$dbname = "balldb";
+
+
+try {
+	$conn = new PDO("mysql:host=$servername; dbname=$dbname", $username, $password);
+	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+	$item_id = 1;
+
+	// Check connection
+	if ($conn->connect_error) {
+	    die("Connection failed: " . $conn->connect_error);
+	} 
+
+	$sql = "Select name, item_id, price, color, description, shape, circumference, weight, material, photo from Product where item_id = $item_id";
+	$result = $conn->query($sql);
+
+	if ($result->num_rows > 0) {
+	    // output data of each row
+	    while($row = $result->fetch_assoc()) {
+	    	echo "Product Name: " . $row["name"] . "<br>" . "Item ID: " . $row["item_id"] . "<br>" . "Price: " . $row["price"] . "<br>" . "Color: " . $row["color"] . "<br>" . "Description: " . $row["description"] . "<br>" . "Additional Information" . "<br>". "Shape: " . $row["shape"] . "<br>" . "circumference: " . $row["circumference"] . "<br>" . "Weight: " . $row["weight"] . "<br>" . "Material: " . $row["material"] . "<br>";
+	    }
+	} else {
+	    echo "0 results";
+	}
+	$conn->close();
+
+
+}
+
+
+
+
+?>
+
+
+</body>
+</html>
