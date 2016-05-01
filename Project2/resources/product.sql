@@ -1,18 +1,21 @@
+drop database balldb;
+create database balldb;
 
+use balldb;
 Create table Product (
 	id INT(6) unsigned auto_increment,
 	name VARCHAR(50) not null,
 	item_id INT(20) not null,
 	price VARCHAR(25) not null,
 	color VARCHAR (50) not null,
-	description VARCHAR(200) not null,
+	description VARCHAR(500) not null,
 	shape VARCHAR (50) not null,
-	circumference VARCHAR (25) not null,
-	weight VARCHAR(25) not null,
-	material VARCHAR(50) not null,
+	circumference VARCHAR (50) not null,
+	weight VARCHAR(50) not null,
+	material VARCHAR(250) not null,
 	photo VARCHAR(70) not null,
 	PRIMARY KEY(id)
-)
+);
 
 Create table Transaction (
 	id INT(6) unsigned auto_increment,
@@ -29,10 +32,9 @@ Create table Transaction (
 	address VARCHAR(50) not null,
 	city VARCHAR(50) not null,
 	state VARCHAR(2) not null,
-	shipping VARCHAR(50) not null
-	PRIMARY KEY(id),
-	FOREIGN KEY(item_id) REFERENCES Product(item_id)
-)
+	shipping VARCHAR(50) not null,
+	PRIMARY KEY(id)
+);
 
 Insert into Product values(null, "Basketball", 1, "$19.99", "Orange with black ribs", "Basketball is a popular sport played by two teams of five players on a basketball court. A team can score a field goal by shooting the ball through the basket. Basketball is fun to play and requires only simple equipment. All you need to play basketball are a ball and hoop. Buy a basketball today to play with your friends.", "Spherical", "28.5-30 in (72-76 cm)", "18-22 oz (510-624 g)", "Synethic rubber", "basketball.png");
 Insert into Product values(null, "Football", 2, "$19.99", "Brown", "Football is a well-loved sport that dates back to the nineteeth century. It's game that takes place on a rectangular football field with goal lines on both ends. The game begins with two teams of equal number, but varying player size, were divided b a center line.", "Oval, uneven shape", "20.75-21.25 in (52.7-54 cm)", "11-11.25 in (397-425.25 g)", "Inflated rubber enclosed in a pebble-grained leather cover or cowhide", "football.png");
@@ -46,3 +48,8 @@ Insert into Product values(null, "Volleyball", 9, "$19.99", "White, blue and yel
 Insert into Product values(null, "Bowling ball", 10, "$19.99", "Red", "Bowling is a sport in which a player rolls or throws a bowling ball towards pins at the end of a lane. When all pins are knocked down on the first roll, this is a strike. In pin bowling, players usually play on a flat wooden or other synthetic surface. In target bowling, the surface may be grass, gravel or a synthetic surface. Buy your own personal bowling ball today to knock down some pins to win!", "Spherical", "27 cm (10.62 in)", "6 kg (13.32 lbs)", "Resin coverings and polyurethane", "bowlingball.png");
 Insert into Product values(null, "Water Polo ball", 11, "$19.99", "Yellow", "Water polo is team water sport that consists of 4 quarters in which the two teams attempt to score goals by throwing the ball into their opponent's goal, with the team with the most goals at the end of the game winning the match. A team consists of  field players and one goalkeeper in the water at any one time. Summer is just around the corner so buy your water polo ball today and play some water polo with your friends.", "Spherical", "68-71 cm (size 5)", "14-16 oz (400-450 g)", "Inflatable bladder and rubber fabric cover", "waterpoloball.png");
 Insert into Product values(null, "Medicine ball", 12, "$19.99", "Blue and black", "Medicine ball, also known as an exercise ball or a fitness ball, is a weighted ball often used for rehabilitation and strength training.", "Spherical", "27 cm (10.62 in)", "5 kg (11.02 lbs)", "Leather or vinyl covered nylon cloth, and filled with heavy material to give them weight", "medicineball.png");
+
+
+Select * from Product where id = 1;
+
+Select name, item_id, price, color, description, shape, circumference, weight, material, photo from Product where item_id = 1;
