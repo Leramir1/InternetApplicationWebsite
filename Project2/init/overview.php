@@ -2,9 +2,9 @@
 
 <html>
 <head>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.js"></script>
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="jquery.js"></script>
+  <link href="bootstrap.min.css" rel="stylesheet">
+  <script src="bootstrap.min.js"></script>
 
  <style>
 table{
@@ -61,6 +61,20 @@ echo ('<thead>
       </thead>');
 try {
   while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+      $getTax = "SELECT * FROM taxbystate WHERE state = '" . $_POST['State'] . "'";
+      $tax = $pdo->prepare($getTax);
+      // $tax->bindParam('?', $_POST['State']);
+      $tax->execute(array(
+        ':stateTax' => $_POST['State']));
+      // $taxDoc = $tax->fetchAll();
+      $taxDoc = $tax->fetch(PDO::FETCH_ASSOC);
+
+      // echo("<pre>" . $taxDoc['tax'] . " tax </pre>");
+      // echo("<pre>" . $row['price'] . " price </pre>");
+      $total = ($_POST['quantity'] * 19.99) + (($_POST['quantity'] * 19.99) * $taxDoc['tax']);
+
+      $_POST['total'] = number_format((float)$total, 2, '.', '');
+
       echo "<tbody><tr><td>";
       echo ($row['name']);
       echo ("</td><td>");
@@ -250,7 +264,7 @@ try {
               </select><br><br>
               Shipping:<br>
               <select id=\"ship\" name=\"Shipping\">
-                  <option value=\"overnight\">Overnight</option>
+                  <option value=\"Overnight\">Overnight</option>
                   <option value=\"2Day\">2-Day Expedited</option>
                   <option value=\"6Day\">6-Day Ground</option>
               </select><br><br>
@@ -295,8 +309,13 @@ try {
                   echo ($row['color']);
                   echo("</p><br>");
 
+                  echo("<h4>Tax Rate by State: </h4><p>");
+                  echo ($taxDoc['tax']);
+                  echo("</p><br>");
+
                   echo("<h4>Tax: </h4><p>");
-                  echo ($_POST['Shipping']);
+                  $taxTotal = number_format((float)(($_POST['quantity'] * 19.99) * $taxDoc['tax']), 2, '.', '');
+                  echo ($taxTotal);
                   echo("</p><br>");
 
                   echo("<h4>Total Price: </h4><p>");
@@ -338,16 +357,22 @@ try {
   }
 if(isset($_POST['submit']))
     {
-      // $getTax = "SELECT tax FROM taxbystate WHERE state = :STATE";
+      // $getTax = "SELECT * FROM taxbystate WHERE state = '" . $_POST['State'] . "'";
       // $tax = $pdo->prepare($getTax);
-      // $tax->bindParam(':state', $_POST['State']));
-      // $tax->execute();
-      // $taxDoc = $tax->fetchAll();
+      // // $tax->bindParam('?', $_POST['State']);
+      // $tax->execute(array(
+      //   ':stateTax' => $_POST['State']));
+      // // $taxDoc = $tax->fetchAll();
+      // $taxDoc = $tax->fetch(PDO::FETCH_ASSOC);
 
-      // echo("<pre>" . $taxDoc['tax'] . "help </pre>");
-      // $total = ($_POST['quantity'] * $row['price']) + (($_POST['quantity'] * $row['price']) * $tax['tax']);
-      $_POST['total'] = "";
+      // // echo("<pre>" . $taxDoc['tax'] . " tax </pre>");
+      // // echo("<pre>" . $row['price'] . " price </pre>");
+      // $total = ($_POST['quantity'] * 19.99) + (($_POST['quantity'] * 19.99) * $taxDoc['tax']);
 
+      // $_POST['total'] = number_format((float)$total, 2, '.', '');
+      // echo "<pre>";
+      // print_r($_POST);
+      // echo "</pre>";
       $sql = "INSERT INTO transaction (first_name, last_name, phone, email, quantity, item_id,
         cc_num, exp_month, exp_year, address, city, state, shipping) VALUES (:firstname, 
         :lastname, :phonenumber, :email, :quantity, :itemid, :creditcard, :Month, :Year, :address, :city,
@@ -374,7 +399,7 @@ if(isset($_POST['submit']))
           <?php
       }
 } catch (PDOException $e) {
-  $e->getMessage();
+  echo $e->getMessage();
 }
 echo "</table>\n";
 
