@@ -1,7 +1,7 @@
-drop database balldb;
-create database balldb;
+drop database inf124grp14;
+create database inf124grp14;
 
-use balldb;
+use inf124grp14;
 Create table Product (
 	id INT(6) unsigned auto_increment,
 	name VARCHAR(50) not null,

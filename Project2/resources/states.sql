@@ -1,7 +1,7 @@
 Create table TaxByState (
-	id unsigned auto_increment not null,
+	id INT(6) unsigned auto_increment,
 	state VARCHAR(2) not null,
-    tax DECIMAL(0,4) not null,
+    tax DECIMAL(4,4) not null,
     PRIMARY KEY (id)
 );
 
@@ -60,7 +60,7 @@ Insert into TaxByState values(null, "PR", .105);
 
 
 Create table State (
-	id unsigned auto_increment not null,
+	id INT(6) unsigned auto_increment,
 	name VARCHAR(100) not null,
 	abbreviation VARCHAR(2) not null,
 	PRIMARY KEY(id),
