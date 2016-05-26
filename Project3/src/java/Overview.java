@@ -4,8 +4,13 @@
  * and open the template in the editor.
  */
 
+import java.beans.Statement;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.*;
+import java.math.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,8 +21,41 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author jimmywu
  */
-@WebServlet(urlPatterns = {"/index"})
-public class index extends HttpServlet {
+@WebServlet(urlPatterns = {"/Overview"})
+public class Overview extends HttpServlet {
+    
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+        static final String DB_URL = "jdbc::mysql:://sylvester-mccoy-v3.ics.uci.edu/inf124grp14";
+        
+        static final String USER = "inf124grp14";
+        static final String PASSWORD = "W6uP=epe";
+        
+        response.setContentType("text/html");
+        
+        
+        PrintWriter out = response.getWriter();
+        String title = "Database Result";
+                
+        
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            
+            Connection connection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+            Statement statement = (Statement) connection.createStatement();
+            String sql = "";
+            ResultSet rs = statement.executeQuery(sql);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Overview.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException se) {
+            se.printStackTrace();
+        }
+}
+
+
+
+    
+
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,30 +74,28 @@ public class index extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Balls to the Wall!</title>\n" +
-                    "<style>body{"+
-                    "background-color:white;"+
-                    "text-align: center;}"+
-                    "h1{"+
-                        "font-size:40px;"
-                    + "}</style>"
-            );         
+            out.println("<style>\n" +
+                "table, th, td {\n" +
+                "border: 1px solid black;\n" +
+                "}\n" +
+                "th {\n" +
+                "color:#531C53\n" +
+                "}\n" +
+                "th, td {\n" +
+                "text-align: center;\n" +
+                "}\n" +
+                "body {\n" +
+                "background-color:beige;\n" +
+                "}\n" +
+                ".productImage:hover {\n" +
+                "transform: scale(2, 2);\n" +
+                "opacity: 1;\n" +
+                "}\n" +
+                "\n" +
+                "</style>");            
             out.println("</head>");
             out.println("<body>");
-//            out.println("<h1>Servlet index at " + request.getContextPath() + "</h1>");
-            out.println("<h1>Balls To the Walls Emporium</h1>\n" +
-                "<pre>\n"+ 
-                "<img src='/resources/products.jpg'>\n" +
-                "Hello! Welcome to the official homepage for Balls To the Walls Emporium! \n" +
-                "We are a specialty storein the business of selling you balls of all kinds.\n" +
-                "We got basketballs, baseballs,footballs and so much more just waiting for you! \n" +
-                "Any sport, any activity, we got youcovered!\n" +
-                "Our store has just officially had its grand opening and its today! \n" +
-                "All prices are $19.99! \n" +
-                "Our team: Luis Ramirez, Allen Thich, Vonnie Wu, and Jimmy Wu \n" +
-                "are just waiting to help you find the perfect ball for your sport!\n" +
-                "</pre>\n" +
-                "<a href=\"Overview\">Click Here to Continue to Store</a>");
+            out.println("<center><p style=\"font-size:58px; display:inline-block; color:#5C7A84\">Balls To The Walls Emporium</p></center>");
             out.println("</body>");
             out.println("</html>");
         }
