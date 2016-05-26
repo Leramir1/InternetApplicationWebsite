@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author jimmywu
  */
 @WebServlet(urlPatterns = {"/index"})
-public class index extends HttpServlet {
+public class Index extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
