@@ -51,6 +51,8 @@ public class ProductDetails extends HttpServlet {
             Statement stmt = null;
             ResultSet rs = null;
             String itemId = request.getParameter("id");
+            int Id = Integer.parseInt(request.getParameter("id"));
+            
             //SQL query command
             String SQL = "SELECT * FROM Product WHERE item_id=" + itemId;
             stmt = con.createStatement();
@@ -63,7 +65,19 @@ public class ProductDetails extends HttpServlet {
             out.println("<script type=\"text/javascript\" src=\"jquery.js\"></script>" +
                         "<link href=\"bootstrap.min.css\" rel=\"stylesheet\">" +
                         "<link href=\"https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css\" rel=\"stylesheet\" integrity=\"sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1\" crossorigin=\"anonymous\">" +
-                        "<script src=\"bootstrap.min.js\"></script>");            
+                        "<script src=\"bootstrap.min.js\"></script>");
+            out.println("<script>"
+                    + "$(window).on('beforeunload', function () {" +
+                    " $.ajax({" +
+                    "        type: 'POST'," +
+                    "        async: true," +
+                    "        url: 'http://andromeda-14.ics.uci.edu:1337/ProductDetails?id=" + Id + "'," +
+                    "        done:function(){" +
+                    "          console.log('memcache deleted');" +
+                    "      }" +
+                    "    });" +
+                    "});"
+                    + "</script>");
             out.println("</head>");
             out.println("<style>");
             out.println("td {"
@@ -134,12 +148,6 @@ public class ProductDetails extends HttpServlet {
                     + "<i class=\"fa fa-cart-plus\" aria-hidden=\"true\"></i> Add to Cart</a>");
             }
 
-            out.println("</div>" + 
-                    "</div>" + 
-                    "</div>" + 
-                    "</pre>");
-            out.println("</body>");
-            out.println("</html>");
             
             HttpSession s = request.getSession(true);
 
@@ -157,11 +165,31 @@ public class ProductDetails extends HttpServlet {
                 viewedItems.remove(0);
             }
             viewedItems.add(request.getParameter("id"));
-            s.setAttribute("lastViewedItems", viewedItems);
+            s.setAttribute("lastViewedItems", viewedItems);  
             
-            //ServletContext servContext = getServletContext();
+            if(getServletContext().getAttribute(itemId) == null) {
+                    getServletContext().setAttribute(itemId, 0);
+            }
+            int currViewers = (int) getServletContext().getAttribute(itemId);
+            out.println("<button type=\"button\" class=\"btn btn-primary btn-lg pull-left\" role=\"button\">"
+                    + "<i class=\"fa fa-user\" aria-hidden=\"true\"></i> " + currViewers +
+                    " other user(s) viewing.</button>");
             
+            currViewers++;
+            getServletContext().setAttribute(itemId, currViewers);
+            
+           
 
+            out.println("</div>" + 
+                    "</div>" + 
+                    "</div>" + 
+                    "</pre>");
+            out.println("</body>");
+            out.println("</html>");
+            
+            out.flush();
+            out.close();
+            
             con.close();
         }
     }
@@ -198,21 +226,15 @@ public class ProductDetails extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (ClassNotFoundException e) {
-            try {
-                throw new ClassNotFoundException("HELP");
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(ProductDetails.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } catch (SQLException e) {
-            try {
-                throw new SQLException("HELP");
-            } catch (SQLException ex) {
-                Logger.getLogger(ProductDetails.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        String Id = request.getParameter("id");
+
+        int currViewers = (int) getServletContext().getAttribute(Id);
+        if (currViewers == 0) {
+            return;
         }
+
+        --currViewers;
+        getServletContext().setAttribute(Id, currViewers);
     }
 
     /**
